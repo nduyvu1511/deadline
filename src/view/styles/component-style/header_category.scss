@@ -1,0 +1,82 @@
+.header__bottom-category-content {
+    @include responsive(xl-screen) {
+        position: absolute;
+        @include hidden;
+        margin-top: 50px;
+        top: calc(100% + 1.2rem);
+        border: 1px solid $color-gray;
+    }
+    width: 100%;
+    background-color: #fff;
+    transition: all 0.4s ease;
+
+    &::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 20px;
+        background-color: transparent;
+        top: -2rem;
+        left: 0;
+    }
+
+    &-list {
+        list-style: none;
+        &-item {
+            & a {
+                display: block;
+                height: 100%;
+                padding: 1rem 2rem;
+                @include style-text(400, 1.4rem, 2rem, black);
+                transition: all 0.4s ease;
+
+                &:hover {
+                    background-color: $color-1st;
+                }
+            }
+
+            &:hover {
+                .menu__child {
+                    @include show;
+                    margin-top: 0;
+                }
+            }
+
+            .menu__child {
+                @include hidden;
+                position: absolute;
+                top: -1px;
+                right: -100%;
+                width: 100%;
+                border: 1px solid $color-gray;
+                background-color: #fff;
+                transition: all 0.4s ease;
+                &-list {
+                    list-style: none;
+                    &-item {
+                        & a {
+                            display: block;
+                            height: 100%;
+                            padding: 1rem 2rem;
+                            @include style-text(400, 1.4rem, 2rem, black);
+                            transition: all 0.4s ease;
+
+                            &:hover {
+                                background-color: $color-1st;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.nav__mobile-search-wrapper {
+    padding: 3rem;
+    background-color: $color-1st;
+
+    .header__search-button {
+        border-radius: 0;
+    }
+}

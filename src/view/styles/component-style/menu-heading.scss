@@ -1,0 +1,12 @@
+.menu__modal-heading {
+    width: 100%;
+    padding: 2rem 0;
+    background-color: $color-1st;
+    text-align: center;
+
+    & p {
+        @include style-text(600, 1.6rem, 2rem, white);
+        text-transform: uppercase;
+        cursor: default;
+    }
+}

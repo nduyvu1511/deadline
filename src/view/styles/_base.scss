@@ -1,0 +1,211 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: normal;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+@each $val in $numbers {
+    .grid-col-#{$val} {
+        grid-template-columns: repeat($val, 1fr);
+    }
+}
+
+@each $val in $numbers {
+    .grid-col-xs#{$val} {
+        @include responsive(xs-screen) {
+            grid-template-columns: repeat($val, 1fr);
+        }
+    }
+}
+
+@each $val in $numbers {
+    .grid-col-xxl-#{$val} {
+        @include responsive(xxl-screen) {
+            grid-template-columns: repeat($val, 1fr);
+        }
+    }
+}
+
+@each $val in $numbers {
+    .grid-col-sm-#{$val} {
+        @include responsive(sm-screen) {
+            grid-template-columns: repeat($val, 1fr);
+        }
+    }
+}
+
+@each $val in $numbers {
+    .grid-col-md-#{$val} {
+        @include responsive(md-screen) {
+            grid-template-columns: repeat($val, 1fr);
+        }
+    }
+}
+
+@each $val in $numbers {
+    .grid-col-lg-#{$val} {
+        @include responsive(lg-screen) {
+            grid-template-columns: repeat($val, 1fr);
+        }
+    }
+}
+
+@each $val in $numbers {
+    .grid-col-xl-#{$val} {
+        @include responsive(xl-screen) {
+            grid-template-columns: repeat($val, 1fr);
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1650;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    @include responsive(sm-screen) {
+        padding: 0 3rem;
+    }
+}
+
+.container {
+    width: 100%;
+    padding: 0 1.5rem;
+    margin: 0 auto;
+
+    @include responsive(sm-screen) {
+        max-width: 100%;
+        padding: 0 3rem;
+    }
+}
+
+.header-svg-icon {
+    width: 22px;
+    fill: white;
+}
+
+.hide-on-xl-screen {
+    display: block;
+    @include responsive(xl-screen) {
+        display: none;
+    }
+}
+
+.btn-reset {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+@keyframes menu-open {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes menu-close {
+    0% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes show-image-product {
+    0% {
+        opacity: 0;
+        position: absolute;
+    }
+
+    100% {
+        opacity: 1;
+        position: static;
+    }
+}
+
+@keyframes fade-in-test {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes toggle-content {
+    0% {
+        opacity: 0;
+        max-height: 0;
+    }
+
+    100% {
+        opacity: 1;
+        max-height: auto;
+    }
+}
+
+.img-fluid {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.grid {
+    display: grid;
+}

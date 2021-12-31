@@ -1,0 +1,67 @@
+.modal {
+    @include fixed(unset, unset, 0, 0);
+    background-color: white;
+    width: calc(100% - 60px);
+    @include responsive(md-screen) {
+        width: 380px;
+    }
+    max-width: 380px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1001;
+    transition: all 0.4s ease;
+
+    &-left {
+        left: 0;
+        transform: translateX(-100%);
+    }
+
+    &-right {
+        right: 0;
+        transform: translateX(100%);
+    }
+
+    &-center {
+        bottom: unset;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) !important;
+        width: unset;
+        height: unset;
+        max-width: unset;
+    }
+
+    &-active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+    }
+
+    &-stack {
+        z-index: 1005;
+
+        .overlay {
+            z-index: 1004;
+        }
+    }
+}
+
+.overlay {
+    background-color: rgba(35, 35, 35, 0.8);
+    @include fixed(0, 0, 0, 0);
+    z-index: 1000;
+    cursor: pointer;
+    @include hidden-animated;
+    transition: all 0.3s linear;
+    animation: fade-in 0.3s linear;
+    &-active {
+        @include visible-animated;
+    }
+
+    &-stack {
+        z-index: 1004;
+    }
+}
+
+@keyframes fadeOut {
+}

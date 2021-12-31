@@ -1,0 +1,311 @@
+.header {
+    background-color: $color-1st;
+
+    &-separate {
+        height: 1px;
+        width: 100%;
+        background-color: #d79d00;
+    }
+
+    .header-active {
+        @include responsive(xl-screen) {
+            @include fixed(0, 0, unset, 0);
+            background-color: #fcb800;
+            padding: 1rem 1.5rem;
+            @include responsive(sm-screen) {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+        }
+    }
+
+    &__top {
+        @include flex(space-between, center);
+        padding: 1rem 0;
+        @include responsive(xl-screen) {
+            padding: 2.5rem 0;
+        }
+
+        &-logo {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        &-search {
+            display: none;
+            @include responsive(xxl-screen) {
+                display: block;
+            }
+            flex: 1;
+            margin-right: 3rem;
+        }
+
+        &-actions {
+            width: 100%;
+            max-width: 320px;
+            &-list {
+                @include flex(flex-end, center);
+                @include responsive(xl-screen) {
+                    justify-content: space-between;
+                }
+                list-style: none;
+            }
+
+            &-item {
+                margin-right: 1.5rem;
+                @include responsive(sm-screen) {
+                    margin-right: 3rem;
+                }
+                position: relative;
+
+                &:first-child,
+                &:nth-child(2) {
+                    display: none;
+                }
+
+                &:first-child,
+                &:nth-child(2) {
+                    @include responsive(xl-screen) {
+                        display: block;
+                    }
+                }
+
+                &-quantity {
+                    @include circle-absolute(22px, black);
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                }
+
+                &-link {
+                    display: block;
+                    color: black;
+
+                    &:hover {
+                        & svg {
+                            fill: white;
+                        }
+                    }
+
+                    & svg {
+                        font-size: 2.5rem;
+                        @include responsive(lg-screen) {
+                            font-size: 3rem;
+                        }
+                    }
+                }
+            }
+
+            &-user {
+                display: flex;
+                align-items: center;
+                position: relative;
+
+                & svg {
+                    font-size: 3.5rem;
+                    @include responsive(lg-screen) {
+                        font-size: 4rem;
+                    }
+                }
+                &-link {
+                    margin-left: 1rem;
+                    display: none;
+                    @include responsive(sm-screen) {
+                        display: block;
+                    }
+
+                    & a {
+                        display: block;
+                        @include style-text(700, 1.4rem, 2rem, #7c5a00);
+
+                        &:hover {
+                            color: white;
+                        }
+                    }
+                }
+
+                .user__loggedin-content {
+                    position: absolute;
+                    min-width: 240px;
+                    top: calc(100% + 0.4rem);
+                    right: 0;
+                    z-index: 30;
+                    background-color: #fff;
+                    @include hidden;
+                    margin-top: 20px;
+                    transition: all 0.4s ease;
+
+                    &-list {
+                        list-style: none;
+                        &-item {
+                            &-link {
+                                @include style-text(500, 1.4rem, 2rem, black);
+                                padding: 1rem 2rem;
+                                display: inline-block;
+                                transition: all 0.4s ease;
+
+                                &:hover {
+                                    color: $color-1st;
+                                }
+                            }
+
+                            &:last-child {
+                                border-top: 1px solid #eaeaea;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .header__top-actions-user-active:hover .user__loggedin-content {
+                @include show;
+                margin-top: 0;
+            }
+        }
+    }
+
+    &__bottom {
+        @include flex(space-between, center);
+        padding: 1rem 0;
+        position: relative;
+        display: none;
+        @include responsive(xl-screen) {
+            display: flex;
+        }
+
+        &-category {
+            width: 100%;
+            max-width: 260px;
+            @include flex(flex-start, center);
+            cursor: pointer;
+            position: relative;
+
+            &:hover {
+                .header__bottom-category-content {
+                    @include show;
+                    margin-top: 0;
+                }
+            }
+
+            & svg {
+                font-size: 2.5rem;
+                margin-right: 2rem;
+                fill: #7c5a00;
+            }
+
+            & span {
+                @include style-text(700, 1.6rem, 2rem, black);
+            }
+        }
+
+        &-right {
+            &-switch {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                & img {
+                    width: 20px;
+                }
+
+                & p {
+                    @include style-text(400, 1.4rem, 1.4, black);
+                    cursor: pointer;
+                    margin-left: 0.5rem;
+                }
+            }
+        }
+
+        // navigation
+        .header__nav {
+            flex: 1;
+            &-list {
+                display: flex;
+                list-style: none;
+
+                &-item {
+                    & a {
+                        text-decoration: none;
+                        font-size: 1.6rem;
+                        color: black;
+                        font-weight: 400;
+                        margin-right: 2rem;
+
+                        // &:last-of-type {
+                        //     margin-right: 0;
+                        // }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.nav__mobile {
+    @include fixed(0, 0, 0, unset);
+    padding: 1rem 1.5rem;
+    background: #fff;
+    z-index: 1008;
+    display: flex;
+    @include responsive(xl-screen) {
+        display: none;
+    }
+    justify-content: center;
+    border-top: 1px solid $color-border;
+
+    &-list {
+        @include flex(space-between, center);
+        width: 100%;
+        @include responsive(sm-screen) {
+            width: 70%;
+        }
+        @include responsive(md-screen) {
+            width: 50%;
+        }
+        list-style: none;
+
+        &-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            & svg {
+                font-size: 3rem;
+                fill: #616161;
+            }
+
+            & p {
+                margin-top: 1rem;
+                @include style-text(400, 1.4rem, 1.4rem, #616161);
+            }
+        }
+    }
+}
+
+@include responsive(md-screen) {
+}
+
+// Modal menu nav mobile
+.modal {
+    .header__nav {
+        &-list {
+            list-style: none;
+            &-item {
+                & a {
+                    display: inline-block;
+                    @include style-text(500, 1.4rem, 1.4rem, black);
+                    padding: 1.6rem 2rem;
+                }
+            }
+        }
+    }
+}
+
+body {
+    margin-bottom: 2000px;
+}
